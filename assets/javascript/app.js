@@ -1,8 +1,7 @@
 $(document).ready(function() {
 
-var sports = ["Basketball", "Ultimate Frisbee", "Football", "Hockey", "Soccer"];
+var sports = ["BASKETBALL", "ULTIMATE FRISBEE", "FOOTBALL", "HOCKEY", "SOCCER"];
 
-      
       function makeButtons() {
        
         $("#buttons-div").empty();
@@ -24,9 +23,17 @@ var sports = ["Basketball", "Ultimate Frisbee", "Football", "Hockey", "Soccer"];
         
         var value = $("#user-input").val().trim();
 
+        value = value.toUpperCase();
+        
+        var exists = sports.indexOf((value));
+
+        console.log(exists);
+
         console.log(value);
 
-        if (value != ""){
+        console.log(sports);
+
+        if (value != "" && exists == -1){
 
         sports.push(value);
 
@@ -38,9 +45,13 @@ var sports = ["Basketball", "Ultimate Frisbee", "Football", "Hockey", "Soccer"];
 
       $(document).on("click", ".sport", function(){
 
+        var parentId = $("#gifs");
+
+        parentId.empty();
+
         var item = $(this).attr("data-name");
 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=&q=" + item.toLowerCase() + "&limit=10&offset=0&rating=G&lang=en";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + item + "&api_key=BmYcs67AmZXib6KE0iCK6OgqVujNjYoq&limit=10";
 
         $.ajax({
           url: queryURL,
@@ -50,19 +61,55 @@ var sports = ["Basketball", "Ultimate Frisbee", "Football", "Hockey", "Soccer"];
 
           console.log(response);
 
-          var parentID = $("#gifs");
-          var newDiv = $("<div>");
-          var newImage = $("<img>");
+        for(var i = 0; i < 10; i++){
 
-          var gifUrl = response
-          var rating = response.Rated;
+            var newDiv = $("<div>");
+            var newImage = $("<img>");
+            newImage.addClass("gif-image");
 
-          newDiv.append("Rated: " + rating + "<br><br>");
-          newImage.attr("src", gifUrl);
+            var imgUrl = response.data[i].images.original_still.url;
+            var rating = response.data[i].rating;
+            var gifUrl = response.data[i].images.original.url;
 
-          parentID.prepend(newDiv, newImage);
+            newImage.attr("data-still", imgUrl);
+            newImage.attr("data-animate", gifUrl);
+            newImage.attr("data-state", "still");
+
+            newDiv.append("Rated: " + rating + "<br>");
+            newImage.attr("src", imgUrl);
+
+            parentId.prepend(newDiv, newImage, "<br><br>");
+            }
+
+            $(".gif-image").click(function(){
+
+                var state = $(this).attr("data-state");
+    
+                if(state === "still"){
+    
+                    var url = $(this).attr("data-animate");
+    
+                    $(this).attr("src", url);
+
+                    $(this).attr("data-state", "animate");
+
+                    console.log(state);
+                }
+                else{
+                    
+                    var url = $(this).attr("data-still")
+    
+                    $(this).attr("src", url);
+
+                    $(this).attr("data-state", "still");
+
+                    console.log(state);
+
+                }
+            })
           
         })
+
       })
 
       $("#clear").click(function(event){

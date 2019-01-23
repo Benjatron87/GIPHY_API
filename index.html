@@ -16,39 +16,43 @@
 <body>
 
     <div class="container">
+        <div class="row d-flex justify-content-center" id="header">
+            GIPHY Sports App
+        </div>
 
-        <div class="row">
+        <div class="row d-flex justify-content-center">
 
-            <div class="col-12">
+            <div class="col-md-12 d-flex justify-content-center">
+    
+                <div id="buttons-div">
 
-                <form id="movie-form">
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+
+            <div class="col-md-12">
+
+                <form>
 
                     <label for="user-input" value="Add a Sport"></label>
 
-                    <input type="text" id="user-input"><br>
+                    <input type="text" id="user-input">
                 
-                    <input id="add-button" type="submit" value="Add">
+                    <input id="add-button" type="submit" value="Add"><br>
 
-                    <input id="clear" type="submit" value="Clear">
+                    <input id="clear" type="submit" value="Clear Gifs">
 
                 </form>
             </div>
         </div>
-    </div>
 
-    <div id="buttons-div"></div>
+        <div class="row d-flex justify-content-center">
 
-    <div class="container">
+            <div id="gifs"></div>
 
-        <div class="row">
-
-            <div id="gifs" class="col-12">
-
-            </div>
         </div>
-    </div>
-
-
     </div>
 
 </body>

@@ -1,0 +1,39 @@
+body{
+    background: rgb(255, 208, 0);
+}
+
+#header{
+    font-size: 36px;
+    font-family: initial;
+    color: rgb(0, 0, 107);
+    text-shadow: -2px 0px 0px white;
+    font-weight: bold;
+}
+
+.gif-image{
+    width: 400px;
+    border: 1px solid rgb(0, 0, 107);
+    border-radius: 10%;
+}
+
+#gifs{
+    color: rgb(0, 0, 107);
+    font-weight: bold;
+}
+
+.sport{
+    border: 2px solid white;
+    border-radius: 20%;
+    margin: 10px;
+    background: rgb(0, 0, 107);
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+.sport:hover{
+    background: rgb(0, 0, 158);
+}
+
+#add-button, #clear{
+    margin: 10px;
+}
