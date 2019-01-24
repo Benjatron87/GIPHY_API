@@ -51,7 +51,7 @@ var sports = ["BASKETBALL", "ULTIMATE FRISBEE", "FOOTBALL", "HOCKEY", "SOCCER"];
 
         var item = $(this).attr("data-name");
 
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + item + "&api_key=BmYcs67AmZXib6KE0iCK6OgqVujNjYoq&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + item + "&api_key=BmYcs67AmZXib6KE0iCK6OgqVujNjYoq&limit=10";
 
         $.ajax({
           url: queryURL,
